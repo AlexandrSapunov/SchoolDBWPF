@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище SchoolModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="ДолжностьРаботы">
+    <Key>
+      <PropertyRef Name="КодДолжности" />
+    </Key>
+    <Property Name="КодДолжности" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Название" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ДолжностьШколы">
+    <Key>
+      <PropertyRef Name="КодДолжности" />
+    </Key>
+    <Property Name="КодДолжности" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Название" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ЖурналДолжностей">
+    <Key>
+      <PropertyRef Name="КодЖурнала" />
+    </Key>
+    <Property Name="КодЖурнала" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="КодПреподавателя" Type="int" />
+    <Property Name="КодДолжности" Type="int" />
+    <Property Name="ДатаПринятия" Type="date" />
+    <Property Name="ДатаСнятия" Type="date" />
+  </EntityType>
+  <EntityType Name="ЖурналПосещаемости">
+    <Key>
+      <PropertyRef Name="КодЖурнала" />
+    </Key>
+    <Property Name="КодЖурнала" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="КодУченика" Type="int" />
+    <Property Name="ДатаОтметки" Type="date" />
+    <Property Name="КодПреподавателя" Type="int" />
+    <Property Name="КодПредмета" Type="int" />
+    <Property Name="КодОтметки" Type="int" />
+  </EntityType>
+  <EntityType Name="ЖурналУспеваемости">
+    <Key>
+      <PropertyRef Name="КодЖурнала" />
+    </Key>
+    <Property Name="КодЖурнала" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="КодУченика" Type="int" />
+    <Property Name="КодПреподавателя" Type="int" />
+    <Property Name="КодПредмета" Type="int" />
+    <Property Name="Дата" Type="date" />
+    <Property Name="Оценка" Type="int" />
+  </EntityType>
+  <EntityType Name="Класс">
+    <Key>
+      <PropertyRef Name="КодКласса" />
+    </Key>
+    <Property Name="КодКласса" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Название" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="МестоРаботы">
+    <Key>
+      <PropertyRef Name="КодРаботы" />
+    </Key>
+    <Property Name="КодРаботы" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Название" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="КодДолжности" Type="int" />
+    <Property Name="ТелефонОрганизации" Type="nvarchar(max)" />
+    <Property Name="ЭлектроннаяПочтаОрганизации" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Отметка">
+    <Key>
+      <PropertyRef Name="КодОтметки" />
+    </Key>
+    <Property Name="КодОтметки" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Отметка" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Предмет">
+    <Key>
+      <PropertyRef Name="КодПредмета" />
+    </Key>
+    <Property Name="КодПредмета" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Название" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Преподаватель">
+    <Key>
+      <PropertyRef Name="КодПреподавателя" />
+    </Key>
+    <Property Name="КодПреподавателя" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ФИО" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ДатаРождения" Type="date" />
+    <Property Name="НомерТелефона" Type="nvarchar(max)" />
+    <Property Name="ЭлектроннаяПочта" Type="nvarchar(max)" />
+    <Property Name="Логин" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Пароль" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Родители">
+    <Key>
+      <PropertyRef Name="КодРодителя" />
+    </Key>
+    <Property Name="КодРодителя" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ФИО" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ДатаРождения" Type="date" />
+    <Property Name="НомерТелефона" Type="nvarchar(max)" />
+    <Property Name="КодМестаРаботы" Type="int" />
+    <Property Name="КодДолжности" Type="int" />
+  </EntityType>
+  <EntityType Name="Ученик">
+    <Key>
+      <PropertyRef Name="КодУченика" />
+    </Key>
+    <Property Name="КодУченика" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ФИОУченика" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ДатаРождения" Type="date" />
+    <Property Name="НомерСвидетельстваОРождении" Type="nvarchar(max)" />
+    <Property Name="НомерРегистрацииРебенка" Type="nvarchar(max)" />
+    <Property Name="НомерСнилса" Type="nvarchar(max)" />
+    <Property Name="КодРодителя" Type="int" />
+    <Property Name="КодКласса" Type="int" />
+  </EntityType>
+  <Association Name="FK__ЖурналДол__КодДо__03F0984C">
+    <End Role="ДолжностьШколы" Type="Self.ДолжностьШколы" Multiplicity="0..1" />
+    <End Role="ЖурналДолжностей" Type="Self.ЖурналДолжностей" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ДолжностьШколы">
+        <PropertyRef Name="КодДолжности" />
+      </Principal>
+      <Dependent Role="ЖурналДолжностей">
+        <PropertyRef Name="КодДолжности" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ЖурналДол__КодПр__02FC7413">
+    <End Role="Преподаватель" Type="Self.Преподаватель" Multiplicity="0..1" />
+    <End Role="ЖурналДолжностей" Type="Self.ЖурналДолжностей" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Преподаватель">
+        <PropertyRef Name="КодПреподавателя" />
+      </Principal>
+      <Dependent Role="ЖурналДолжностей">
+        <PropertyRef Name="КодПреподавателя" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ЖурналПос__КодОт__0B91BA14">
+    <End Role="Отметка" Type="Self.Отметка" Multiplicity="0..1" />
+    <End Role="ЖурналПосещаемости" Type="Self.ЖурналПосещаемости" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Отметка">
+        <PropertyRef Name="КодОтметки" />
+      </Principal>
+      <Dependent Role="ЖурналПосещаемости">
+        <PropertyRef Name="КодОтметки" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ЖурналПос__КодПр__09A971A2">
+    <End Role="Преподаватель" Type="Self.Преподаватель" Multiplicity="0..1" />
+    <End Role="ЖурналПосещаемости" Type="Self.ЖурналПосещаемости" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Преподаватель">
+        <PropertyRef Name="КодПреподавателя" />
+      </Principal>
+      <Dependent Role="ЖурналПосещаемости">
+        <PropertyRef Name="КодПреподавателя" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ЖурналПос__КодПр__0A9D95DB">
+    <End Role="Предмет" Type="Self.Предмет" Multiplicity="0..1" />
+    <End Role="ЖурналПосещаемости" Type="Self.ЖурналПосещаемости" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Предмет">
+        <PropertyRef Name="КодПредмета" />
+      </Principal>
+      <Dependent Role="ЖурналПосещаемости">
+        <PropertyRef Name="КодПредмета" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ЖурналПос__КодУч__08B54D69">
+    <End Role="Ученик" Type="Self.Ученик" Multiplicity="0..1" />
+    <End Role="ЖурналПосещаемости" Type="Self.ЖурналПосещаемости" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ученик">
+        <PropertyRef Name="КодУченика" />
+      </Principal>
+      <Dependent Role="ЖурналПосещаемости">
+        <PropertyRef Name="КодУченика" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ЖурналУсп__КодПр__00200768">
+    <End Role="Предмет" Type="Self.Предмет" Multiplicity="0..1" />
+    <End Role="ЖурналУспеваемости" Type="Self.ЖурналУспеваемости" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Предмет">
+        <PropertyRef Name="КодПредмета" />
+      </Principal>
+      <Dependent Role="ЖурналУспеваемости">
+        <PropertyRef Name="КодПредмета" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ЖурналУсп__КодПр__7F2BE32F">
+    <End Role="Преподаватель" Type="Self.Преподаватель" Multiplicity="0..1" />
+    <End Role="ЖурналУспеваемости" Type="Self.ЖурналУспеваемости" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Преподаватель">
+        <PropertyRef Name="КодПреподавателя" />
+      </Principal>
+      <Dependent Role="ЖурналУспеваемости">
+        <PropertyRef Name="КодПреподавателя" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ЖурналУсп__КодУч__7E37BEF6">
+    <End Role="Ученик" Type="Self.Ученик" Multiplicity="0..1" />
+    <End Role="ЖурналУспеваемости" Type="Self.ЖурналУспеваемости" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ученик">
+        <PropertyRef Name="КодУченика" />
+      </Principal>
+      <Dependent Role="ЖурналУспеваемости">
+        <PropertyRef Name="КодУченика" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__МестоРабо__КодДо__6E01572D">
+    <End Role="ДолжностьРаботы" Type="Self.ДолжностьРаботы" Multiplicity="0..1" />
+    <End Role="МестоРаботы" Type="Self.МестоРаботы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ДолжностьРаботы">
+        <PropertyRef Name="КодДолжности" />
+      </Principal>
+      <Dependent Role="МестоРаботы">
+        <PropertyRef Name="КодДолжности" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Родители__КодДол__71D1E811">
+    <End Role="ДолжностьРаботы" Type="Self.ДолжностьРаботы" Multiplicity="0..1" />
+    <End Role="Родители" Type="Self.Родители" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ДолжностьРаботы">
+        <PropertyRef Name="КодДолжности" />
+      </Principal>
+      <Dependent Role="Родители">
+        <PropertyRef Name="КодДолжности" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Родители__КодМес__70DDC3D8">
+    <End Role="МестоРаботы" Type="Self.МестоРаботы" Multiplicity="0..1" />
+    <End Role="Родители" Type="Self.Родители" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="МестоРаботы">
+        <PropertyRef Name="КодРаботы" />
+      </Principal>
+      <Dependent Role="Родители">
+        <PropertyRef Name="КодМестаРаботы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ученик__КодКласс__75A278F5">
+    <End Role="Класс" Type="Self.Класс" Multiplicity="0..1" />
+    <End Role="Ученик" Type="Self.Ученик" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Класс">
+        <PropertyRef Name="КодКласса" />
+      </Principal>
+      <Dependent Role="Ученик">
+        <PropertyRef Name="КодКласса" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ученик__КодРодит__74AE54BC">
+    <End Role="Родители" Type="Self.Родители" Multiplicity="0..1" />
+    <End Role="Ученик" Type="Self.Ученик" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Родители">
+        <PropertyRef Name="КодРодителя" />
+      </Principal>
+      <Dependent Role="Ученик">
+        <PropertyRef Name="КодРодителя" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище SchoolModelContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ДолжностьРаботы" EntityType="Self.ДолжностьРаботы" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ДолжностьШколы" EntityType="Self.ДолжностьШколы" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ЖурналДолжностей" EntityType="Self.ЖурналДолжностей" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ЖурналПосещаемости" EntityType="Self.ЖурналПосещаемости" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ЖурналУспеваемости" EntityType="Self.ЖурналУспеваемости" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Класс" EntityType="Self.Класс" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="МестоРаботы" EntityType="Self.МестоРаботы" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Отметка" EntityType="Self.Отметка" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Предмет" EntityType="Self.Предмет" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Преподаватель" EntityType="Self.Преподаватель" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Родители" EntityType="Self.Родители" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ученик" EntityType="Self.Ученик" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ЖурналДол__КодДо__03F0984C" Association="Self.FK__ЖурналДол__КодДо__03F0984C">
+      <End Role="ДолжностьШколы" EntitySet="ДолжностьШколы" />
+      <End Role="ЖурналДолжностей" EntitySet="ЖурналДолжностей" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ЖурналДол__КодПр__02FC7413" Association="Self.FK__ЖурналДол__КодПр__02FC7413">
+      <End Role="Преподаватель" EntitySet="Преподаватель" />
+      <End Role="ЖурналДолжностей" EntitySet="ЖурналДолжностей" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ЖурналПос__КодОт__0B91BA14" Association="Self.FK__ЖурналПос__КодОт__0B91BA14">
+      <End Role="Отметка" EntitySet="Отметка" />
+      <End Role="ЖурналПосещаемости" EntitySet="ЖурналПосещаемости" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ЖурналПос__КодПр__09A971A2" Association="Self.FK__ЖурналПос__КодПр__09A971A2">
+      <End Role="Преподаватель" EntitySet="Преподаватель" />
+      <End Role="ЖурналПосещаемости" EntitySet="ЖурналПосещаемости" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ЖурналПос__КодПр__0A9D95DB" Association="Self.FK__ЖурналПос__КодПр__0A9D95DB">
+      <End Role="Предмет" EntitySet="Предмет" />
+      <End Role="ЖурналПосещаемости" EntitySet="ЖурналПосещаемости" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ЖурналПос__КодУч__08B54D69" Association="Self.FK__ЖурналПос__КодУч__08B54D69">
+      <End Role="Ученик" EntitySet="Ученик" />
+      <End Role="ЖурналПосещаемости" EntitySet="ЖурналПосещаемости" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ЖурналУсп__КодПр__00200768" Association="Self.FK__ЖурналУсп__КодПр__00200768">
+      <End Role="Предмет" EntitySet="Предмет" />
+      <End Role="ЖурналУспеваемости" EntitySet="ЖурналУспеваемости" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ЖурналУсп__КодПр__7F2BE32F" Association="Self.FK__ЖурналУсп__КодПр__7F2BE32F">
+      <End Role="Преподаватель" EntitySet="Преподаватель" />
+      <End Role="ЖурналУспеваемости" EntitySet="ЖурналУспеваемости" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ЖурналУсп__КодУч__7E37BEF6" Association="Self.FK__ЖурналУсп__КодУч__7E37BEF6">
+      <End Role="Ученик" EntitySet="Ученик" />
+      <End Role="ЖурналУспеваемости" EntitySet="ЖурналУспеваемости" />
+    </AssociationSet>
+    <AssociationSet Name="FK__МестоРабо__КодДо__6E01572D" Association="Self.FK__МестоРабо__КодДо__6E01572D">
+      <End Role="ДолжностьРаботы" EntitySet="ДолжностьРаботы" />
+      <End Role="МестоРаботы" EntitySet="МестоРаботы" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Родители__КодДол__71D1E811" Association="Self.FK__Родители__КодДол__71D1E811">
+      <End Role="ДолжностьРаботы" EntitySet="ДолжностьРаботы" />
+      <End Role="Родители" EntitySet="Родители" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Родители__КодМес__70DDC3D8" Association="Self.FK__Родители__КодМес__70DDC3D8">
+      <End Role="МестоРаботы" EntitySet="МестоРаботы" />
+      <End Role="Родители" EntitySet="Родители" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ученик__КодКласс__75A278F5" Association="Self.FK__Ученик__КодКласс__75A278F5">
+      <End Role="Класс" EntitySet="Класс" />
+      <End Role="Ученик" EntitySet="Ученик" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ученик__КодРодит__74AE54BC" Association="Self.FK__Ученик__КодРодит__74AE54BC">
+      <End Role="Родители" EntitySet="Родители" />
+      <End Role="Ученик" EntitySet="Ученик" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

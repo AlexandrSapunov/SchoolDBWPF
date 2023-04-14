@@ -1,0 +1,79 @@
+﻿<Window x:Class="SchoolDBwpf.View.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SchoolDBwpf.View"
+        xmlns:vm="clr-namespace:SchoolDBwpf.ViewModel"
+        mc:Ignorable="d"
+        Title="Главная" Height="446" Width="800"
+        FontSize="{DynamicResource BaseMediumFontSize}">
+
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200*"/>
+                <ColumnDefinition Width="250"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1">
+                <TextBlock Margin="5 0 5 0">
+                    <Run Text="Преподаватель:"/>
+                    <LineBreak/>
+                    <Run Text="{Binding CurrentUser.CurrentTeacher.ФИО}"/>
+                    <LineBreak/>
+                    <Run Text="Почта:"/>
+                    <Run Text="{Binding CurrentUser.CurrentTeacher.ЭлектроннаяПочта}"/>
+                    <LineBreak/>
+                    <Run Text="Телефон:"/>
+                    <Run Text="{Binding CurrentUser.CurrentTeacher.НомерТелефона}"/>
+                </TextBlock>
+                <Calendar Height="320"/>
+            </StackPanel>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="409*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Margin="3">
+                    <Run Text="Текущее время:"/>
+                    <Run Text="{Binding CurrentTime, UpdateSourceTrigger=PropertyChanged}"/>
+                    <LineBreak/>
+                    <Run Text="Расписание звонков:"/>
+                </TextBlock>
+                <ListBox Grid.Row="1" Margin="10">
+                    <ListBoxItem Content="1 урок: 08:30 - 09:15"/>
+                    <ListBoxItem Content="2 урок: 09:25 - 10:10"/>
+                    <ListBoxItem Content="3 урок: 10:20 - 11:05"/>
+                    <ListBoxItem Content="4 урок: 11:25 - 12:10"/>
+                    <ListBoxItem Content="5 урок: 12:30 - 13:15"/>
+                    <ListBoxItem Content="6 урок: 13:25 - 14:10"/>
+                    <ListBoxItem Content="7 урок: 14:20 - 15:05"/>
+                </ListBox>
+            </Grid>
+            
+        </Grid>
+
+        <StackPanel Grid.Column="0">
+            <Button x:Name="ButtonBegins" Content="Начать урок" Margin="5"
+                    Click="ButtonBegins_Click"/>
+            <Button x:Name="ButtonGiveMarks" Content="Выставить оценки" Margin="5"
+                    Click="ButtonGiveMarks_Click"/>
+            <Button x:Name="ButtonMagazines" Content="Журналы" Margin="5"
+                    Click="ButtonMagazines_Click"/>
+            <Button x:Name="ButtonJobLog" Content="Журнал должностей" Margin="5" 
+                    Click="ButtonJobLog_Click"/>
+            <Button x:Name="ButtonExit" Content="Выйти" Margin="5" 
+                    Click="ButtonExit_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

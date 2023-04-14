@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8371d8dcbc9844269c80ae001fee998f" Name="Diagram1" ZoomLevel="56">
+        <EntityTypeShape EntityType="SchoolModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.ДолжностьРаботы" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.ДолжностьШколы" Width="1.5" PointX="7.5" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.ЖурналДолжностей" Width="1.5" PointX="9.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.ЖурналПосещаемости" Width="1.5" PointX="9.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.ЖурналУспеваемости" Width="1.5" PointX="12.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.Класс" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.МестоРаботы" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.Отметка" Width="1.5" PointX="7.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.Предмет" Width="1.5" PointX="7.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.Преподаватель" Width="1.5" PointX="7.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.Родители" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.Ученик" Width="1.5" PointX="7.5" PointY="2.875" IsExpanded="true" />
+        <AssociationConnector Association="SchoolModel.FK__МестоРабо__КодДо__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK__Родители__КодДол__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK__ЖурналДол__КодДо__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK__ЖурналДол__КодПр__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK__ЖурналПос__КодОт__0B91BA14" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK__ЖурналПос__КодПр__09A971A2" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK__ЖурналПос__КодПр__0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK__ЖурналПос__КодУч__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK__ЖурналУсп__КодПр__00200768" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK__ЖурналУсп__КодПр__7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK__ЖурналУсп__КодУч__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK__Ученик__КодКласс__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK__Родители__КодМес__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK__Ученик__КодРодит__74AE54BC" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
